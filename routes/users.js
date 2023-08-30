@@ -2,10 +2,6 @@ const express = require("express");
 const userHelper = require("../helpers/userHelper");
 const router = express.Router();
 
-const noCache = (req, res, next) => {
-  res.header("Cache-Control", "no-cache, no-store, must-revalidate");
-  next();
-};
 
 const verifyLogin = (req, res, next) => {
   if (req.session.user?.logedIn) {
@@ -15,19 +11,23 @@ const verifyLogin = (req, res, next) => {
   }
 };
 
-router.get("/", noCache, verifyLogin, (req, res) => {
+router.get("/", verifyLogin, (req, res) => {
   console.log(req.session.user);
   userHelper.getBlog(req.session.user?.user._id).then((blogs) => {
     res.render("user/home", { userData: req.session.user, blogs });
   });
 });
 
-router.get("/login", noCache, (req, res) => {
+router.get("/login", (req, res) => {
+  if(req.session.user?.logedIn){
+    res.redirect('/')
+  }else{
   res.render("user/login", { err: req.session.err });
   delete req.session.err;
+  }
 });
 
-router.post("/login-form", noCache, (req, res) => {
+router.post("/login-form", (req, res) => {
   console.log(req.body);
   userHelper
     .doLogin(req.body)
@@ -71,7 +71,7 @@ router.get("/logout", verifyLogin, (req, res) => {
   req.session.destroy();
   res.redirect("/login");
 });
-router.get("/new-blog", (req, res) => {
+router.get("/new-blog",(req, res) => {
   res.render("user/new-blog", {
     userData: req.session.user,
     alert: req.session.alert,
