@@ -24,8 +24,12 @@ router.get('/',noCache,verifyLogin,(req,res) => {
 })
 
 router.get('/login',noCache,(req,res) => {
+  if(req.session.admin?.logedIn){
+    res.redirect('/admin')
+  }else{
   res.render('admin/login',{err:req.session.err})
   delete req.session.err
+  }
 })
 
 router.post('/admin-login',noCache,(req, res) => {
