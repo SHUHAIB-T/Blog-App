@@ -1,0 +1,91 @@
+<style>
+    .error {
+        color: red;
+        display: block;
+    }
+
+    label {
+        display: none;
+    }
+
+    .form-control {
+        width: 300px !important;
+    }
+</style>
+<section class="vh-100">
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-4 col-lg-4 col-xl-5">
+                <img src="https://camo.githubusercontent.com/61491d59e71fec5c794945fed916a4a682b6c0404fc31f30b08a0d919c558404/68747470733a2f2f696d616765732e73717561726573706163652d63646e2e636f6d2f636f6e74656e742f76312f3537363966633430316236333162616231616464623261622f313534313538303631313632342d5445363451474b524a4738535741495553374e532f6b6531375a77644742546f6464493870446d34386b506f73776c7a6a53564d4d2d53784f703743563539425a772d7a505067646e346a557756634a45315a7657515578776b6d794578676c4e714770304976544a5a616d574c49327a76595748384b332d735f3479737a63703272795449304871544f6161556f68724938504936465879386339505774426c7141566c555335697a7064634958445a71445976707252715a32395077306f2f636f64696e672d667265616b2e676966"
+                    class="img-fluid p-5" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 shadow-lg p-3 mb-5 bg-white rounded px-4 py-4">
+                <div class="h2 text-center mb-4">Add User</div>
+                <form action="/admin/new-user" method="post" name="form" id="loginForm">
+                    <div
+                        class="d-flex flex-column align-items-center justify-content-center justify-content-lg-start px-5">
+                        {{#if err}}
+                        <div class="form-control" style="border:none !important">
+                            <div class="err text-danger">
+                                <p>{{err.message}}</p>
+                            </div>
+                        </div>
+                        {{/if}}
+                        <!-- User name input -->
+                        <div class="form-outline mb-2">
+                            <p class="form-label">User Name</p>
+                            <input type="text" id="username" class="form-control" placeholder="Enter a user name"
+                                name="userName" />
+                            <label></label>
+                        </div>
+                        <!-- Email input -->
+                        <div class="form-outline mb-2">
+                            <p class="form-label">Email address</p>
+                            <input type="email" id="email" class="form-control"
+                                placeholder="Enter a valid email address" name="email" />
+                            <label></label>
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline mb-2">
+                            <p class="form-label ">Password</p>
+                            <input type="password" id="password" class="form-control" placeholder="Enter password"
+                                name="password" />
+                            <label class="lbl" for="form3Example4"></label>
+                        </div>
+                        <button type="submit" class="btn btn-success mt-3 btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;"
+                            onclick="return confirm('Are you sure you want to submit the form')">Add User
+                        </button>
+                        <div class="form-outline mb-2 d-flex align-items-center justify-content-center"
+                            style="width: 100%;">
+                        </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right -->
+    </div>
+</section>
+<script>
+    $('#loginForm').validate({
+        rules: {
+            email: {
+                required: true,
+            },
+            password: {
+                required: true,
+                minlength: 4
+            },
+            userName: {
+                required: true,
+            }
+        },
+        messages: {
+            required: "This field is requied",
+            minlength: "Password should be at least 4 characters"
+        }
+    });
+</script>

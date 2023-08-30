@@ -1,0 +1,51 @@
+<style>
+  #navv {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+</style>
+
+<nav id="navv" class="navbar navbar-expand-lg navbar-light bg-success">
+  <div class="profile-wrapper d-flex justify-content-between align-items-center">
+    <div class="navbar-brand text-white" style="margin-left: 10px;">{{userData.user.userName}}</div>
+  </div>
+  <div style="width: 20rem; display:flex; justify-content:space-between; align-items:center">
+    <a style="color: #fff; text-decoration:none" href="/">Home</a>
+    <div style="border:1px solid #fff ;padding:0.5rem;border-radius:10px">
+      <a style="color: #fff; text-decoration:none" href="new-blog"><i class="fa-solid fa-feather-pointed"></i>Create
+        blog</a>
+    </div>
+    <a class="btn btn-warning" onclick="return confirm('Are you sure want to logout')" href="/logout">
+      Log Out
+    </a>
+  </div>
+</nav>
+
+{{!-- blog session --}}
+<div class="heading text-success d-flex justify-content-center align-items-center flex-column p-3">
+  <h2> Your Blogs</h2>
+  <p>hello👋 {{userData.user.userName}} these are your blogs</p>
+</div>
+<hr style="margin-top: -3px;">
+
+<div class="container">
+  <div class="row">
+    {{#each blogs}}
+    <div class="col-md-6 item mb-3">
+      <div class="item-in">
+        <h4>{{this.title}}</h4>
+        <div class="seperator"></div>
+        <p>{{this.body}}</p>
+        </a>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>

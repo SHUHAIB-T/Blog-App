@@ -1,0 +1,88 @@
+<style>
+  .error {
+    color: red;
+    display: block;
+  }
+
+  label {
+    display: none;
+  }
+
+  .form-control {
+    width: 300px !important;
+  }
+</style>
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-4 col-lg-4 col-xl-5">
+        <img src="https://user-images.githubusercontent.com/74038190/241764371-9d0fd0c4-5c7f-4122-b884-64a1e1685d2d.gif"
+          class="img-fluid p-5" alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 shadow-lg p-3 mb-5 bg-white rounded px-4 py-4">
+        <div class="h2 text-center mb-4">Sign Up</div>
+        <form action="/signup-form" method="post" name="form" id="loginForm">
+          <div class="d-flex flex-column align-items-center justify-content-center justify-content-lg-start px-5">
+            {{#if err}}
+            <div class="form-control" style="border:none !important">
+              <div class="err text-danger">
+                <p>{{err.message}}</p>
+              </div>
+            </div>
+            {{/if}}
+            <!-- User name input -->
+            <div class="form-outline mb-2">
+              <p class="form-label">User Name</p>
+              <input type="text" id="username" class="form-control" placeholder="Enter a user name" name="userName" />
+              <label></label>
+            </div>
+            <!-- Email input -->
+            <div class="form-outline mb-2">
+              <p class="form-label">Email address</p>
+              <input type="email" id="email" class="form-control" placeholder="Enter a valid email address"
+                name="email" />
+              <label></label>
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-2">
+              <p class="form-label ">Password</p>
+              <input type="password" id="password" class="form-control" placeholder="Enter password" name="password" />
+              <label class="lbl" for="form3Example4"></label>
+            </div>
+            <a href="/login" class="sign-up-link ">already have account? Go to Login?</a>
+            <button type="submit" class="btn btn-success mt-3 btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;"
+              onclick="return confirm('Are you sure you want to submit the form')">Sign Up
+            </button>
+            <div class="form-outline mb-2 d-flex align-items-center justify-content-center" style="width: 100%;">
+            </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right -->
+  </div>
+</section>
+<script>
+  $('#loginForm').validate({
+    rules: {
+      email: {
+        required: true,
+      },
+      password: {
+        required: true,
+        minlength: 4
+      },
+      userName: {
+        required: true,
+      }
+    },
+    messages: {
+      required: "This field is requied",
+      minlength: "Password should be at least 4 characters"
+    }
+  });
+</script>

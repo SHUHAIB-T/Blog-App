@@ -1,0 +1,58 @@
+<style>
+    input {
+        width: 300px !important;
+    }
+</style>
+<h2 align="center" class="mt-5 text-secondary">Update User Data</h2>
+<div class="container mt-5 mb-5 d-flex justify-content-center">
+    <div class="card px-1 py-4">
+        <div class="card-body">
+            <form action="/admin/update_user_data" method="post">
+                {{#if err}}
+                <div class="form-control" style="border:none !important">
+                    <div class="err text-danger">
+                        <p>{{this.err.message}}</p>
+                    </div>
+                </div>
+                {{/if}}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="name">User Name</label> <input class="form-control mb-3 " type="text"
+                                name="userName" value="{{userData.userName}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="name">Email</label> <input class="form-control mb-3" name="email" type="text"
+                                value="{{userData.email}}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="name">Password</label> <input class="form-control" name="password"
+                                type="password">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <input class="mb-3" name="_id" type="text" value="{{userData._id}}"
+                                style="width: 0px; height:0px; border:none;">
+                        </div>
+                    </div>
+                </div>
+                <div class="botton-container" style="position: absolute; bottom:30px; width:90%; background:#ffff">
+                    <button type="reset" class="btn btn-primary">Reset</button>
+                    <button type="submit" class="btn btn-success">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<style>
+  .search-box form {
+    border: 1px solid gray;
+    border-radius: 10px;
+  }
+
+  .search-box input {
+    border: none;
+    border-radius: 15px;
+  }
+
+  .search-box input:focus {
+    outline: none;
+  }
+</style>
+<h2 align="center" class="my-3">User Details</h2>
+<div class="container mt-3">
+  <div class="header py-3 d-flex justify-content-between">
+    <a href="/admin/new-user" class="btn btn-outline-primary ">New User</a>
+    <div style="width: 25rem; justify-content:space-between" class="d-flex ">
+      <div class="search-box">
+        <form action="/admin/search-user" method="get" class="d-flex p-0">
+          <input type="text" class="ps-2" name="userName" placeholder="Search user name">
+          <button type="submit" class="btn btn-outline-primary">Search</button>
+        </form>
+      </div>
+      <a class="btn btn-warning" onclick="return confirm('Are you sure want to logout')" href="/admin/logout">logout</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title text-uppercase mb-0">Manage Users</h5>
+        </div>
+        <div class="table-responsive">
+          <table class="table no-wrap user-table mb-0">
+            <thead>
+
+              <tr>
+                <th scope="col" class="border-0 text-uppercase font-medium">Name</th>
+                <th scope="col" class="border-0 text-uppercase font-medium">Email</th>
+                <th scope="col" class="border-0 text-uppercase font-medium">Created on</th>
+                <th scope="col" class="border-0 text-uppercase font-medium">Manage</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each userData}}
+              <tr>
+                <td>
+                  <h5 class="font-medium mb-0">{{this.userName}}</h5>
+                </td>
+                <td>
+                  <span class="text-muted">{{this.email}}</span><br>
+                </td>
+                <td>
+                  <span class="text-muted">{{this.createdOn}}</span><br>
+                </td>
+                <td>
+                  <a onclick="return confirm('Are you sure,You want to delete {{this.userName}}')"
+                    href="/admin/deleteUser/{{this._id}}" class="btn btn-outline-danger py-0"
+                    style="height: 30px;">Delete </a>
+                  <a href="/admin/update-user/{{this._id}}" class="btn btn-outline-info ml-2 py-0"
+                    style="height: 30px;">edit User </a>
+                </td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
