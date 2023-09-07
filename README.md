@@ -71,7 +71,7 @@ mongo
 - Create username and password for Admin
 - eg:
     ```
-    db.userDB.insertOne({email:"admin@gmail.com",password:"admin@123"})
+    db.admin.insertOne({email:"admin@gmail.com",password:"admin@123"})
     ```
 - In the admin panel, you can: <br>
   - View a list of users.
