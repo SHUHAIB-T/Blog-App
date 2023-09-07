@@ -54,11 +54,20 @@ To access the admin section:
 
 - before getting into the admin section you should create admin email and password
 ### Go to your command prompt / cmd
-- go to mongosh
+- go to mongosh 
  
 ```
 mongosh
 ```
+or
+```
+mongo
+```
+- enter
+  -
+    ```
+    use userDB
+    ```
 - Create username and password for Admin
 - eg:
     ```
