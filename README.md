@@ -23,7 +23,7 @@ Before you begin, ensure you have met the following requirements:
    ```
 2. Navigate to the project directory:
     ```
-    cd your-directory
+    cd Blog-App
     ```
 3. Install the required dependencies:
 
@@ -36,7 +36,7 @@ Before you begin, ensure you have met the following requirements:
     ```
     npm start
     ```
-The app will be accessible at `http://localhost:3000`
+The app will be accessible at http://localhost:3000
 
 2. Register a new user account or sign in if you have an existing account.
 
@@ -48,9 +48,13 @@ The app will be accessible at `http://localhost:3000`
 ## Admin Section
 To access the admin section:
 - Navigate to the admin panel using the provided URL, e.g `https://localhost:3000/admin`
-- befor getting into the admin section you shouls create admin email and password
-### go to your command prompt / cmd
-- go to mongodh
+  <p align="center">
+  <img height="400" width="auto" src="https://github.com/SHUHAIB-T/Blog-App/blob/master/public/images/admin_login.png">
+</p>
+
+- before getting into the admin section you should create admin email and password
+### Go to your command prompt / cmd
+- go to mongosh
  
 ```
 mongosh
@@ -65,19 +69,9 @@ mongosh
   - Add new users.
   - Delete users, Edit users
   - Search for users using the search functionality.
-
-	
-
+ <p align="center">
+  <img height="400" width="auto" src="https://github.com/SHUHAIB-T/Blog-App/blob/master/public/images/admin%20landing%20page.png">
+</p>
   
   # Contributing
-  `Feel free to contribute to this project. You can submit issues or pull requests.`
-  
-  
-
-
-
-
-
-
-
-
+ 	Feel free to contribute to this project. You can submit issues or pull requests.
