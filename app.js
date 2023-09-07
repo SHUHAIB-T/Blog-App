@@ -35,7 +35,7 @@ app.use('/admin',adminRouter);
 
 // error handler
 app.use((req,res) => {
-  res.render('user/error');
+  res.status(404).render('user/error');
 });
 
 module.exports = app;
